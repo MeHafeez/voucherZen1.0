@@ -1,13 +1,43 @@
 import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
+  // const calculateTimeLeft = () => {
+  //   const endTime = new Date(localStorage.getItem("endTime")).getTime();
+  //   const now = new Date().getTime();
+  //   const difference = endTime - now;
+
+  //   let timeLeft = {};
+
+  //   if (difference > 0) {
+  //     timeLeft = {
+  //       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+  //       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+  //       minutes: Math.floor((difference / 1000 / 60) % 60),
+  //       seconds: Math.floor((difference / 1000) % 60),
+  //     };
+  //   } else {
+  //     timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  //   }
+
+  //   return timeLeft;
+  // };
   const calculateTimeLeft = () => {
-    const endTime = new Date(localStorage.getItem("endTime")).getTime();
+    let endTime = localStorage.getItem("endTime");
+  
+    if (!endTime) {
+      // Set endTime to three months from now if not already set
+      endTime = new Date();
+      endTime.setMonth(endTime.getMonth() + 3);
+      localStorage.setItem("endTime", endTime.toISOString());
+    } else {
+      endTime = new Date(endTime);
+    }
+  
     const now = new Date().getTime();
-    const difference = endTime - now;
-
+    const difference = endTime.getTime() - now;
+  
     let timeLeft = {};
-
+  
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -18,10 +48,10 @@ const CountdownTimer = () => {
     } else {
       timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
-
+  
     return timeLeft;
   };
-
+  
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {

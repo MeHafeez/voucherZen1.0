@@ -84,7 +84,7 @@ function App() {
           </p>
         </section>
         <div className="buttons-section">
-          <button className="login-button">Login</button>
+          {/* <button className="login-button">Login</button> */}
           {/* <button className="signup-button">Sign Up</button> */}
         </div>
         <footer className="footer">
