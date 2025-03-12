@@ -88,7 +88,7 @@ function App() {
           {/* <button className="signup-button">Sign Up</button> */}
         </div>
         <footer className="footer">
-          <p>© 2025 VoucherZen is Proudly Powered By doTech.</p>
+          <p>© 2025 VoucherZen is Proudly Powered By Shams Innovations.</p>
         </footer>
       </div>
     </Router>
